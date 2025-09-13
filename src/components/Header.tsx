@@ -7,10 +7,10 @@ export const Header = () => {
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-[var(--shadow-card)]">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <img src={aasoLogo} alt="AASO H24" className="h-12 w-12 rounded-full" />
+          <img src={aasoLogo} alt="Simalik Rénovation" className="h-12 w-12 rounded-full" />
           <div className="hidden md:block">
-            <h1 className="text-lg font-bold text-foreground">AASO H24</h1>
-            <p className="text-xs text-muted-foreground">Services professionnels 24h/24</p>
+            <h1 className="text-lg font-bold text-foreground">Simalik Rénovation</h1>
+            <p className="text-xs text-muted-foreground">Volets roulants, serrurerie, menuiserie</p>
           </div>
         </div>
         
@@ -18,11 +18,11 @@ export const Header = () => {
           <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
             Services
           </a>
-          <a href="#tarifs" className="text-foreground hover:text-primary transition-colors font-medium">
-            Tarifs
+          <a href="#realisations" className="text-foreground hover:text-primary transition-colors font-medium">
+            Réalisations
           </a>
-          <a href="#temoignages" className="text-foreground hover:text-primary transition-colors font-medium">
-            Témoignages
+          <a href="#avis" className="text-foreground hover:text-primary transition-colors font-medium">
+            Avis clients
           </a>
           <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">
             Contact
@@ -32,7 +32,7 @@ export const Header = () => {
         <div className="flex items-center space-x-3">
           <Button variant="call" className="hidden sm:flex">
             <Phone className="h-4 w-4" />
-            06.51.14.78.72
+            06.56.86.91.66
           </Button>
           <Button variant="outline" size="icon" className="lg:hidden">
             <Menu className="h-4 w-4" />

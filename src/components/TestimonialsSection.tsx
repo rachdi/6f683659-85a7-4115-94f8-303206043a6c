@@ -3,41 +3,41 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    text: "Les galères ne préviennent pas quand elles arrivent. Heureusement que j'ai pu compter sur AASO qui a su résoudre mon problème de serrure en moins d'une demi-heure ! MERCI.",
-    author: "Sam",
+    text: "Service rapide et travail impeccable, je recommande ! Les volets roulants ont été installés en une journée avec un résultat parfait.",
+    author: "Marie",
     location: "Toulouse",
     rating: 5,
   },
   {
-    text: "Ma vitre a été remplacée par AASO H24, je peux vous dire que leur travail est parfait. Je les recommande les yeux fermés.",
-    author: "Nordine",
+    text: "Devis clair, intervention soignée, entreprise sérieuse. Ma porte d'entrée a été remplacée dans les délais annoncés.",
+    author: "Pierre",
     location: "Colomiers",
     rating: 5,
   },
   {
-    text: "3 fois que les manifestants ont détruit mon rideau métallique !!!! La première fois j'ai fait appel à une société dont je tairai le nom. Mais les deux fois suivantes j'ai fait confiance à AASO. Service parfait. Rien à redire.",
-    author: "Simon",
-    location: "Toulouse",
+    text: "Réparation de volets roulants rapide et efficace. L'équipe est professionnelle et les prix sont corrects. Je recommande Simalik.",
+    author: "Sophie",
+    location: "Balma",
     rating: 5,
   },
   {
-    text: "Une plaie de trouver un plombier disponible un samedi soir à 22h. J'ai contacté AASO, ils ont résolu mon problème dans la foulée. Au top...",
-    author: "Sandrine",
-    location: "Balma",
+    text: "Excellent travail pour la motorisation de mes volets. Service client au top et finitions impeccables.",
+    author: "Jean-Luc",
+    location: "Toulouse",
     rating: 5,
   },
 ];
 
 export const TestimonialsSection = () => {
   return (
-    <section id="temoignages" className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+    <section id="avis" className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ils en parlent mieux que nous
+            Avis clients
           </h2>
           <p className="text-xl text-muted-foreground">
-            Découvrez les avis de nos clients satisfaits
+            Découvrez les retours de nos clients satisfaits
           </p>
         </div>
         

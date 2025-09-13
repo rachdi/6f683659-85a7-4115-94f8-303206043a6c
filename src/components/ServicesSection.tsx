@@ -7,25 +7,25 @@ import shutterImage from "@/assets/metal-shutter-service.jpg";
 
 const services = [
   {
-    title: "Dépannage d'urgence serrurerie",
-    description: "AASO intervient en toute circonstance, de jour comme de nuit. Nos équipes se déplacent dans la demi-heure suivant votre demande d'intervention.",
-    details: "Avant toute intervention, nous effectuons une expertise GRATUITE pour que vous puissiez connaître à l'avance vos tarifs et la durée moyenne du service.",
+    title: "Volets roulants",
+    description: "Installation, réparation et motorisation de volets roulants",
+    details: "Installation sur mesure (PVC, aluminium, manuels ou motorisés). Réparation rapide (sangle cassée, moteur bloqué, lames endommagées). Motorisation de volets existants.",
     image: locksmithImage,
-    icon: Clock,
+    icon: CheckCircle,
   },
   {
-    title: "Service de vitrerie",
-    description: "Pose et/ou remplacement de fenêtres, vitrines, double vitrage, baies coulissantes, lucarnes de toit.",
-    details: "Toutes nos interventions en miroiterie et vitrerie vous offrent la garantie d'un travail de qualité réalisé par des équipes disponibles 24h/24 et 7j/7.",
+    title: "Serrurerie",
+    description: "Dépannage serrurerie et sécurisation de portes",
+    details: "Ouverture de portes sans dégâts. Remplacement de serrures toutes marques. Sécurisation (serrures multipoints, cylindres renforcés, verrous).",
     image: glazierImage,
     icon: Shield,
   },
   {
-    title: "Rideaux Métalliques",
-    description: "Il est indispensable de mettre en place une protection efficace pour garantir une sécurité à votre activité.",
-    details: "AASO intervient pour le remplacement et/ou la pose de votre rideau métallique. Devis gratuit et intervention d'urgence à votre service.",
+    title: "Menuiserie extérieure",
+    description: "Portes, fenêtres et menuiseries sur mesure",
+    details: "Pose et remplacement de fenêtres PVC, aluminium ou bois. Installation de portes d'entrée robustes et élégantes. Portails et clôtures sur mesure.",
     image: shutterImage,
-    icon: CheckCircle,
+    icon: Clock,
   },
 ];
 
@@ -35,10 +35,10 @@ export const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Nos Services Professionnels
+            Nos Services
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Des artisans reconnus pour leur disponibilité, leur travail et leur efficacité sur le terrain
+            Spécialistes en volets roulants, serrurerie et menuiserie extérieure
           </p>
         </div>
         
@@ -65,7 +65,7 @@ export const ServicesSection = () => {
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-muted-foreground mb-4 leading-relaxed">
-                    <strong className="text-foreground">AASO</strong> {service.description.replace('AASO ', '')}
+                    {service.description}
                   </CardDescription>
                   <p className="text-sm text-muted-foreground/80 mb-6">
                     {service.details}
@@ -80,26 +80,26 @@ export const ServicesSection = () => {
         </div>
         
         <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 shadow-[var(--shadow-card)] border border-border/50">
-          <h3 className="text-2xl font-bold text-foreground mb-6 text-center">AASO H24</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-6 text-center">À propos</h3>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                <strong className="text-foreground">AASO</strong> est une entreprise à taille humaine, proposant un service de proximité immédiat et à la demande.
+                Basée à Toulouse, <strong className="text-foreground">Simalik Rénovation</strong> est une entreprise spécialisée dans la rénovation et le dépannage auprès des particuliers et des professionnels.
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Avec nos spécialistes formés et notre équipement moderne, <strong className="text-primary">nous travaillons au plus haut niveau</strong> pour garantir votre satisfaction et votre sécurité.
+                Avec plusieurs années d'expérience, nous intervenons dans trois domaines clés : <strong className="text-primary">volets roulants, serrurerie et menuiserie extérieure</strong>.
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Nous intervenons <strong className="text-accent">de jour comme de nuit</strong>, 7 jours sur 7, dans le grand Sud-Ouest de la France.
+                <strong className="text-accent">Nos engagements :</strong> intervention rapide, travail soigné et de qualité artisanale, devis gratuit et conseils personnalisés.
               </p>
             </div>
             <div className="text-center">
               <Button variant="call" size="lg" className="mb-4">
                 <Clock className="h-5 w-5 mr-2" />
-                Contactez-nous 24h/24
+                Contactez-nous
               </Button>
               <p className="text-sm text-muted-foreground">
-                Basé à Toulouse, notre siège social accueille des <strong className="text-foreground">techniciens disponibles</strong> pour répondre à tout type d'urgence dans les 30 minutes suivant votre demande d'intervention.
+                Une équipe à l'écoute et réactive pour votre satisfaction. <strong className="text-foreground">Notre exigence : votre satisfaction.</strong>
               </p>
             </div>
           </div>

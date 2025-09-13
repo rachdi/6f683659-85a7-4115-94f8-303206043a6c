@@ -9,15 +9,15 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
-              <img src={aasoLogo} alt="AASO" className="h-12 w-12 rounded-full" />
+              <img src={aasoLogo} alt="Simalik Rénovation" className="h-12 w-12 rounded-full" />
               <div>
-                <h3 className="text-xl font-bold text-foreground">AASO H24</h3>
-                <p className="text-sm text-muted-foreground">Services professionnels</p>
+                <h3 className="text-xl font-bold text-foreground">Simalik Rénovation</h3>
+                <p className="text-sm text-muted-foreground">Volets, serrurerie, menuiserie</p>
               </div>
             </div>
             <p className="text-muted-foreground text-sm mb-4">
-              Siège social : Toulouse<br />
-              SIRET : 87990612100014
+              25 chemin du séminaire<br />
+              31200 Toulouse
             </p>
           </div>
           
@@ -26,11 +26,11 @@ export const Footer = () => {
             <div className="space-y-3">
               <Button variant="outline" className="w-full justify-start">
                 <Phone className="h-4 w-4 mr-2" />
-                06.51.14.78.72
+                06.56.86.91.66
               </Button>
               <Button variant="outline" className="w-full justify-start">
                 <Mail className="h-4 w-4 mr-2" />
-                contact@aaso.fr
+                simalikrenovation@gmail.com
               </Button>
             </div>
           </div>
@@ -50,7 +50,7 @@ export const Footer = () => {
         
         <div className="border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground mb-2">
-            Copyright © 2019 JE GÈRE TA COM - Tous droits réservés
+            Copyright © 2024 Simalik Rénovation - Tous droits réservés
           </p>
           <p className="text-xs text-muted-foreground">
             Afin de vous offrir une expérience en ligne optimale, ce site web utilise des cookies. 

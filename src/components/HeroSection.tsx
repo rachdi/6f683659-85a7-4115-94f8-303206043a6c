@@ -9,40 +9,40 @@ export const HeroSection = () => {
       <div className="container mx-auto text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-            <span className="text-primary">Devis et déplacement</span>{" "}
-            <span className="text-accent font-black">GRATUIT !</span>
+            <span className="text-primary">Simalik Rénovation</span>{" "}
+            <span className="text-accent font-black">Toulouse</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-foreground mb-4 font-medium">
-            Intervention rapide sur Toulouse & périphérie
+            Votre spécialiste volets roulants, serrurerie et menuiserie extérieure
           </p>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8">
-            Rideaux métalliques, volets roulants, serrure...
+            Des interventions rapides, un savoir-faire artisanal et des solutions durables
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
             <Button variant="hero" size="lg" className="text-xl px-8 py-4">
               <Phone className="h-6 w-6 mr-2" />
-              06.51.14.78.72
+              06.56.86.91.66
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-              Demander un devis
+              Demander un devis gratuit
             </Button>
           </div>
           
           <div className="flex flex-wrap justify-center items-center space-x-8 text-sm text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Clock className="h-4 w-4 text-primary" />
-              <span>Intervention 24h/24</span>
+              <span>Intervention rapide</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="h-4 w-4 text-primary" />
-              <span>Toulouse & périphérie</span>
+              <span>Toulouse & alentours</span>
             </div>
             <div className="flex items-center space-x-2">
               <span className="inline-block w-2 h-2 bg-accent rounded-full"></span>
-              <span>Déplacement dans la demi-heure</span>
+              <span>Devis gratuit sous 24h</span>
             </div>
           </div>
         </div>
