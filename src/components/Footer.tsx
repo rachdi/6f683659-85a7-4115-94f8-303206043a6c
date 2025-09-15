@@ -30,7 +30,7 @@ export const Footer = () => {
               </Button>
               <Button variant="outline" className="w-full justify-start">
                 <Mail className="h-4 w-4 mr-2" />
-                simalikrenovation@gmail.com
+                contact@simalik-renov.com
               </Button>
             </div>
           </div>
