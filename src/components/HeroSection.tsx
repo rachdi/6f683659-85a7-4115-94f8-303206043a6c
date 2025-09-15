@@ -22,10 +22,12 @@ export const HeroSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
+          <a href="tel:0656869166">
             <Button variant="hero" size="lg" className="text-xl px-8 py-4">
               <Phone className="h-6 w-6 mr-2" />
               06.56.86.91.66
             </Button>
+          </a>
             <Button variant="outline" size="lg" className="text-lg px-8 py-4">
               Demander un devis gratuit
             </Button>

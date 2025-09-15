@@ -24,10 +24,12 @@ export const Footer = () => {
           <div className="text-center">
             <h4 className="text-lg font-semibold text-foreground mb-4">Contact</h4>
             <div className="space-y-3">
-              <Button variant="outline" className="w-full justify-start">
-                <Phone className="h-4 w-4 mr-2" />
-                06.56.86.91.66
-              </Button>
+              <a href="tel:0656869166" className="w-full">
+                <Button variant="outline" className="w-full justify-start">
+                  <Phone className="h-4 w-4 mr-2" />
+                  06.56.86.91.66
+                </Button>
+              </a>
               <Button variant="outline" className="w-full justify-start">
                 <Mail className="h-4 w-4 mr-2" />
                 contact@simalik-renov.com

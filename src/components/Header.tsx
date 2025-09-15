@@ -30,10 +30,12 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center space-x-3">
-          <Button variant="call" className="hidden sm:flex">
-            <Phone className="h-4 w-4" />
-            06.56.86.91.66
-          </Button>
+          <a href="tel:0656869166">
+            <Button variant="call" className="hidden sm:flex">
+              <Phone className="h-4 w-4" />
+              06.56.86.91.66
+            </Button>
+          </a>
           <Button variant="outline" size="icon" className="lg:hidden">
             <Menu className="h-4 w-4" />
           </Button>
