@@ -24,7 +24,7 @@ export const Header = () => {
           <a href="#avis" className="text-foreground hover:text-primary transition-colors font-medium">
             Avis clients
           </a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">
+          <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
             Contact
           </a>
         </nav>
