@@ -1,24 +1,23 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-export default defineConfig({
-  plugins: [react()],
-  base: '/6f683659-85a7-4115-94f8-303206043a6c/', // 👈 très important !
-});
-
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
+{
+  "name": "vite_react_shadcn_ts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
-}));
+  "devDependencies": {
+    "@vitejs/plugin-react-swc": "^3.11.0",
+    "gh-pages": "^5.0.0",
+    "lovable-tagger": "^1.1.9",
+    "typescript": "^5.2.2",
+    "vite": "^7.1.7"
+  }
+}
