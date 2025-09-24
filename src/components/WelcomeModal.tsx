@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -12,135 +11,71 @@ export const WelcomeModal = ({ onRequestQuote }: WelcomeModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Show modal after a short delay when component mounts
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 1500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const handleCall = () => {
-    window.location.href = "tel:0656869166";
+  const handleClose = () => {
     setIsOpen(false);
   };
 
   const handleQuoteRequest = () => {
+    handleClose();
     onRequestQuote();
-    setIsOpen(false);
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md mx-4">
-        <button
-          onClick={() => setIsOpen(false)}
-          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-        >
-          <X className="h-4 w-4" />
-          <span className="sr-only">Fermer</span>
-        </button>
-        
-        <DialogHeader className="text-center">
-          <DialogTitle className="text-xl font-bold text-primary mb-2">
-            Bienvenue chez Simalik Rénovation !
+      <DialogContent className="sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold text-primary text-center">
+            🔧 Besoin d'un dépannage urgent ?
           </DialogTitle>
-          <p className="text-muted-foreground">
-            Votre spécialiste en volets roulants, serrurerie et menuiserie à Toulouse
-          </p>
         </DialogHeader>
         
-        <div className="flex flex-col gap-3 mt-6">
-          <Button onClick={handleCall} variant="call" className="flex items-center gap-2 h-12">
-            <Phone className="h-5 w-5" />
-            Appeler maintenant - 06.56.86.91.66
-          </Button>
+        <div className="text-center space-y-6">
+          <div className="space-y-4">
+            <p className="text-lg text-muted-foreground">
+              Volet bloqué ? Serrure cassée ? Problème de menuiserie ?
+            </p>
+            
+            <div className="bg-gradient-to-r from-accent/10 to-primary/10 p-4 rounded-lg border-l-4 border-accent">
+              <p className="font-semibold text-foreground">
+                ⚡ Intervention d'urgence 7j/7
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Devis gratuit par téléphone en 5 minutes
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a href="tel:0656869166" className="flex-1">
+              <Button variant="emergency" size="lg" className="w-full">
+                <Phone className="mr-2 h-5 w-5" />
+                Appeler maintenant
+              </Button>
+            </a>
+            
+            <Button 
+              variant="outline" 
+              size="lg" 
+              onClick={handleQuoteRequest}
+              className="flex-1"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Devis gratuit
+            </Button>
+          </div>
           
-          <Button onClick={handleQuoteRequest} variant="default" className="flex items-center gap-2 h-12">
-            <FileText className="h-5 w-5" />
-            Demander un devis gratuit
-          </Button>
-        </div>
-        
-        <div className="text-center mt-4">
-          <p className="text-sm text-muted-foreground">
-            ✅ Intervention rapide • ✅ Devis gratuit sous 24h • ✅ Toulouse & alentours
+          <p className="text-xs text-muted-foreground">
+            Artisan local • Toulouse et alentours • Garantie décennale
           </p>
         </div>
       </DialogContent>
     </Dialog>
   );
-=======
-import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Phone, FileText, X } from "lucide-react";
-
-interface WelcomeModalProps {
-  onRequestQuote: () => void;
-}
-
-export const WelcomeModal = ({ onRequestQuote }: WelcomeModalProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    // Show modal after a short delay when component mounts
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleCall = () => {
-    window.location.href = "tel:0656869166";
-    setIsOpen(false);
-  };
-
-  const handleQuoteRequest = () => {
-    onRequestQuote();
-    setIsOpen(false);
-  };
-
-  return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md mx-4">
-        <button
-          onClick={() => setIsOpen(false)}
-          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-        >
-          <X className="h-4 w-4" />
-          <span className="sr-only">Fermer</span>
-        </button>
-        
-        <DialogHeader className="text-center">
-          <DialogTitle className="text-xl font-bold text-primary mb-2">
-            Bienvenue chez Simalik Rénovation !
-          </DialogTitle>
-          <p className="text-muted-foreground">
-            Votre spécialiste en volets roulants, serrurerie et menuiserie à Toulouse
-          </p>
-        </DialogHeader>
-        
-        <div className="flex flex-col gap-3 mt-6">
-          <Button onClick={handleCall} variant="call" className="flex items-center gap-2 h-12">
-            <Phone className="h-5 w-5" />
-            Appeler maintenant - 06.56.86.91.66
-          </Button>
-          
-          <Button onClick={handleQuoteRequest} variant="default" className="flex items-center gap-2 h-12">
-            <FileText className="h-5 w-5" />
-            Demander un devis gratuit
-          </Button>
-        </div>
-        
-        <div className="text-center mt-4">
-          <p className="text-sm text-muted-foreground">
-            ✅ Intervention rapide • ✅ Devis gratuit sous 24h • ✅ Toulouse & alentours
-          </p>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
->>>>>>> 3c494f1 (Initial commit)
 };

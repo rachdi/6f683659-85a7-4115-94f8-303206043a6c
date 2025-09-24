@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
@@ -11,41 +10,39 @@ import fenetreApres from "@/assets/fenetre-apres.jpg";
 
 const realisations = [
   {
-    title: "Rénovation volet roulant",
-    category: "Volets roulants",
-    description: "Remplacement complet d'un volet roulant endommagé",
+    title: "Motorisation volet roulant",
+    category: "Volets Roulants",
+    description: "Installation d'un système de motorisation sur volet roulant existant",
     avant: voletAvant,
-    apres: voletApres,
-    details: "Ancien volet roulant avec lames cassées remplacé par un modèle PVC motorisé"
+    apres: voletApres
   },
   {
-    title: "Sécurisation serrurerie",
+    title: "Remplacement serrure 3 points",
     category: "Serrurerie",
-    description: "Installation d'une serrure multipoints haute sécurité",
+    description: "Changement complet d'une serrure 3 points avec cylindre sécurisé",
     avant: serrureAvant,
-    apres: serrureApres,
-    details: "Remplacement d'une ancienne serrure par un système multipoints renforcé"
+    apres: serrureApres
   },
   {
-    title: "Remplacement fenêtres",
+    title: "Pose fenêtre double vitrage",
     category: "Menuiserie",
-    description: "Pose de nouvelles fenêtres PVC double vitrage",
+    description: "Remplacement fenêtre simple vitrage par double vitrage performant",
     avant: fenetreAvant,
-    apres: fenetreApres,
-    details: "Fenêtres anciennes remplacées par du PVC haute performance"
+    apres: fenetreApres
   }
 ];
 
 export const RealisationsSection = () => {
   return (
-    <section id="realisations" className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
+    <section id="realisations" className="py-20 px-4 bg-gradient-to-b from-background to-secondary/10">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Nos Réalisations
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Découvrez quelques exemples de nos interventions en volets roulants, serrurerie et menuiserie extérieure
+            Découvrez quelques-unes de nos interventions récentes. 
+            Des transformations avant/après qui parlent d'elles-mêmes.
           </p>
         </div>
         
@@ -69,184 +66,49 @@ export const RealisationsSection = () => {
                   {/* Image Avant */}
                   <div className="relative">
                     <div className="absolute top-2 left-2 z-10">
-                      <Badge className="bg-destructive text-destructive-foreground">
+                      <Badge className="bg-accent/90 text-accent-foreground">
                         Avant
                       </Badge>
                     </div>
-                    <div className="relative h-48 rounded-lg overflow-hidden">
-                      <img 
-                        src={realisation.avant} 
-                        alt={`${realisation.title} - avant`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
+                    <img 
+                      src={realisation.avant} 
+                      alt={`${realisation.title} - avant`}
+                      className="w-full h-32 object-cover rounded-lg"
+                    />
                   </div>
                   
                   {/* Flèche de transition */}
-                  <div className="flex justify-center">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-                      <ArrowRight className="h-5 w-5 text-primary" />
-                      <span className="text-sm font-medium text-primary">Transformation</span>
+                  <div className="flex items-center justify-center">
+                    <div className="bg-primary rounded-full p-2">
+                      <ArrowRight className="h-4 w-4 text-primary-foreground" />
                     </div>
                   </div>
                   
                   {/* Image Après */}
                   <div className="relative">
                     <div className="absolute top-2 left-2 z-10">
-                      <Badge className="bg-green-600 text-white">
+                      <Badge className="bg-primary text-primary-foreground">
                         Après
                       </Badge>
                     </div>
-                    <div className="relative h-48 rounded-lg overflow-hidden">
-                      <img 
-                        src={realisation.apres} 
-                        alt={`${realisation.title} - après`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
+                    <img 
+                      src={realisation.apres} 
+                      alt={`${realisation.title} - après`}
+                      className="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  
-                  <p className="text-sm text-muted-foreground/80 pt-2 border-t border-border/50">
-                    {realisation.details}
-                  </p>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
         
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground">
+        <div className="text-center mt-16">
+          <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
             Chaque intervention est réalisée avec soin et précision pour garantir votre satisfaction.
           </p>
         </div>
       </div>
     </section>
   );
-=======
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
-import voletAvant from "@/assets/volet-avant.jpg";
-import voletApres from "@/assets/volet-apres.jpg";
-import serrureAvant from "@/assets/serrure-avant.jpg";
-import serrureApres from "@/assets/serrure-apres.jpg";
-import fenetreAvant from "@/assets/fenetre-avant.jpg";
-import fenetreApres from "@/assets/fenetre-apres.jpg";
-
-const realisations = [
-  {
-    title: "Rénovation volet roulant",
-    category: "Volets roulants",
-    description: "Remplacement complet d'un volet roulant endommagé",
-    avant: voletAvant,
-    apres: voletApres,
-    details: "Ancien volet roulant avec lames cassées remplacé par un modèle PVC motorisé"
-  },
-  {
-    title: "Sécurisation serrurerie",
-    category: "Serrurerie",
-    description: "Installation d'une serrure multipoints haute sécurité",
-    avant: serrureAvant,
-    apres: serrureApres,
-    details: "Remplacement d'une ancienne serrure par un système multipoints renforcé"
-  },
-  {
-    title: "Remplacement fenêtres",
-    category: "Menuiserie",
-    description: "Pose de nouvelles fenêtres PVC double vitrage",
-    avant: fenetreAvant,
-    apres: fenetreApres,
-    details: "Fenêtres anciennes remplacées par du PVC haute performance"
-  }
-];
-
-export const RealisationsSection = () => {
-  return (
-    <section id="realisations" className="py-20 px-4 bg-gradient-to-b from-secondary/20 to-background">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Nos Réalisations
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Découvrez quelques exemples de nos interventions en volets roulants, serrurerie et menuiserie extérieure
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          {realisations.map((realisation, index) => (
-            <Card key={index} className="group overflow-hidden border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-[var(--shadow-elegant)] transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <Badge variant="outline" className="mb-2 text-primary border-primary/30">
-                    {realisation.category}
-                  </Badge>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    {realisation.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {realisation.description}
-                  </p>
-                </div>
-                
-                <div className="space-y-4">
-                  {/* Image Avant */}
-                  <div className="relative">
-                    <div className="absolute top-2 left-2 z-10">
-                      <Badge className="bg-destructive text-destructive-foreground">
-                        Avant
-                      </Badge>
-                    </div>
-                    <div className="relative h-48 rounded-lg overflow-hidden">
-                      <img 
-                        src={realisation.avant} 
-                        alt={`${realisation.title} - avant`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* Flèche de transition */}
-                  <div className="flex justify-center">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-                      <ArrowRight className="h-5 w-5 text-primary" />
-                      <span className="text-sm font-medium text-primary">Transformation</span>
-                    </div>
-                  </div>
-                  
-                  {/* Image Après */}
-                  <div className="relative">
-                    <div className="absolute top-2 left-2 z-10">
-                      <Badge className="bg-green-600 text-white">
-                        Après
-                      </Badge>
-                    </div>
-                    <div className="relative h-48 rounded-lg overflow-hidden">
-                      <img 
-                        src={realisation.apres} 
-                        alt={`${realisation.title} - après`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  </div>
-                  
-                  <p className="text-sm text-muted-foreground/80 pt-2 border-t border-border/50">
-                    {realisation.details}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground">
-            Chaque intervention est réalisée avec soin et précision pour garantir votre satisfaction.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
->>>>>>> 3c494f1 (Initial commit)
 };
