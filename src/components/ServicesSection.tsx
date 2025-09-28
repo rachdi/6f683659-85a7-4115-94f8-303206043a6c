@@ -7,25 +7,25 @@ import shutterImage from "@/assets/metal-shutter-service.jpg";
 
 const services = [
   {
-    title: "Serrurerie",
-    description: "Ouvertures de porte, réparation et remplacement de serrures",
-    icon: Shield,
+    title: "Volets roulants",
+    description: "Installation, réparation et motorisation de volets roulants",
+    details: "Installation sur mesure (PVC, aluminium, manuels ou motorisés). Réparation rapide (sangle cassée, moteur bloqué, lames endommagées). Motorisation de volets existants.",
     image: locksmithImage,
-    features: ["Intervention 7j/7", "Ouverture porte claquée", "Changement de serrure", "Installation de verrous"],
-  },
-  {
-    title: "Vitrerie",
-    description: "Remplacement de vitres, fenêtres et portes vitrées",
     icon: CheckCircle,
-    image: glazierImage,
-    features: ["Réparation vitre cassée", "Simple et double vitrage", "Fenêtres sur mesure", "Vitrage sécurisé"],
   },
   {
-    title: "Volets Roulants",
-    description: "Installation, réparation et motorisation de volets",
-    icon: Clock,
+    title: "Serrurerie",
+    description: "Dépannage serrurerie et sécurisation de portes",
+    details: "Ouverture de portes sans dégâts. Remplacement de serrures toutes marques. Sécurisation (serrures multipoints, cylindres renforcés, verrous).",
+    image: glazierImage,
+    icon: Shield,
+  },
+  {
+    title: "Menuiserie extérieure",
+    description: "Portes, fenêtres et menuiseries sur mesure",
+    details: "Pose et remplacement de fenêtres PVC, aluminium ou bois. Installation de portes d'entrée robustes et élégantes. Portails et clôtures sur mesure.",
     image: shutterImage,
-    features: ["Motorisation volets", "Réparation lames", "Changement sangle", "Volets sur mesure"],
+    icon: Clock,
   },
 ];
 
@@ -62,20 +62,15 @@ export const ServicesSection = () => {
                   <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {service.title}
                   </CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    {service.description}
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <CardDescription className="text-muted-foreground mb-4 leading-relaxed">
+                    {service.description}
+                  </CardDescription>
+                  <p className="text-sm text-muted-foreground/80 mb-6">
+                    {service.details}
+                  </p>
+                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                     En savoir plus
                   </Button>
                 </CardContent>
@@ -84,22 +79,28 @@ export const ServicesSection = () => {
           })}
         </div>
         
-        <div className="text-center">
-          <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 shadow-[var(--shadow-card)] border border-border/50">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Une urgence ? Besoin d'un dépannage rapide ?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              Intervention 7j/7, devis gratuit par téléphone
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button variant="emergency" size="lg">
+        <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 shadow-[var(--shadow-card)] border border-border/50">
+          <h3 className="text-2xl font-bold text-foreground mb-6 text-center">À propos</h3>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Basée à Toulouse, <strong className="text-foreground">Simalik Rénovation</strong> est une entreprise spécialisée dans la rénovation et le dépannage auprès des particuliers et des professionnels.
+              </p>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Avec plusieurs années d'expérience, nous intervenons dans trois domaines clés : <strong className="text-primary">volets roulants, serrurerie et menuiserie extérieure</strong>.
+              </p>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                <strong className="text-accent">Nos engagements :</strong> intervention rapide, travail soigné et de qualité artisanale, devis gratuit et conseils personnalisés.
+              </p>
+            </div>
+            <div className="text-center">
+              <Button variant="call" size="lg" className="mb-4">
                 <Clock className="h-5 w-5 mr-2" />
-                Appel d'urgence
+                Contactez-nous
               </Button>
-              <Button variant="outline" size="lg">
-                Demander un devis
-              </Button>
+              <p className="text-sm text-muted-foreground">
+                Une équipe à l'écoute et réactive pour votre satisfaction. <strong className="text-foreground">Notre exigence : votre satisfaction.</strong>
+              </p>
             </div>
           </div>
         </div>

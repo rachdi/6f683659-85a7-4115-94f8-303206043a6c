@@ -51,13 +51,11 @@ export const Footer = () => {
         </div>
         
         <div className="border-t border-border pt-8 text-center">
-          <p className="text-muted-foreground text-sm mb-2">
-            © 2024 Simalik Rénovation. Tous droits réservés.
+          <p className="text-sm text-muted-foreground mb-2">
+            Copyright © 2024 Simalik Rénovation - Tous droits réservés
           </p>
-          <p className="text-muted-foreground text-xs">
-            SIRET: 123 456 789 00123 - Artisan certifié RGE
-          </p>
-          <p className="text-muted-foreground text-xs mt-2">
+          <p className="text-xs text-muted-foreground">
+            Afin de vous offrir une expérience en ligne optimale, ce site web utilise des cookies. 
             En utilisant notre site web, vous acceptez notre utilisation des cookies.
           </p>
         </div>

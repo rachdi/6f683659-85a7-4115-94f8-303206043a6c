@@ -58,32 +58,39 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     onClose();
   };
 
-  const handleChange = (field: string, value: string | boolean) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+  const handleInputChange = (field: string, value: string | boolean) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground z-10"
+        >
+          <X className="h-4 w-4" />
+          <span className="sr-only">Fermer</span>
+        </button>
+
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-primary">
-            Demande de devis gratuit
+          <DialogTitle className="text-xl font-bold text-primary">
+            Demander un devis gratuit
           </DialogTitle>
+          <p className="text-muted-foreground">
+            Décrivez-nous vos besoins, nous vous recontactons sous 24h !
+          </p>
         </DialogHeader>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
+
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="nom">Nom *</Label>
               <Input
                 id="nom"
                 value={formData.nom}
-                onChange={(e) => handleChange("nom", e.target.value)}
+                onChange={(e) => handleInputChange("nom", e.target.value)}
                 required
-                className="border-2 focus:border-primary"
               />
             </div>
             <div className="space-y-2">
@@ -91,112 +98,82 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
               <Input
                 id="prenom"
                 value={formData.prenom}
-                onChange={(e) => handleChange("prenom", e.target.value)}
+                onChange={(e) => handleInputChange("prenom", e.target.value)}
                 required
-                className="border-2 focus:border-primary"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="telephone">Téléphone *</Label>
-              <Input
-                id="telephone"
-                type="tel"
-                value={formData.telephone}
-                onChange={(e) => handleChange("telephone", e.target.value)}
-                required
-                className="border-2 focus:border-primary"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
-              <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => handleChange("email", e.target.value)}
-                required
-                className="border-2 focus:border-primary"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="sujet">Sujet de votre demande *</Label>
-            <Select 
-              value={formData.sujet} 
-              onValueChange={(value) => handleChange("sujet", value)}
+            <Label htmlFor="telephone">Téléphone *</Label>
+            <Input
+              id="telephone"
+              type="tel"
+              value={formData.telephone}
+              onChange={(e) => handleInputChange("telephone", e.target.value)}
               required
-            >
-              <SelectTrigger className="border-2 focus:border-primary">
-                <SelectValue placeholder="Sélectionnez le type de service" />
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Email *</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="sujet">Sujet *</Label>
+            <Select value={formData.sujet} onValueChange={(value) => handleInputChange("sujet", value)}>
+              <SelectTrigger>
+                <SelectValue placeholder="Choisissez le type de demande" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="volets-roulants">Volets roulants</SelectItem>
-                <SelectItem value="serrurerie">Serrurerie</SelectItem>
-                <SelectItem value="menuiserie">Menuiserie extérieure</SelectItem>
-                <SelectItem value="depannage-urgence">Dépannage d'urgence</SelectItem>
-                <SelectItem value="motorisation">Motorisation</SelectItem>
+                <SelectItem value="devis-volets">Devis - Volets roulants</SelectItem>
+                <SelectItem value="devis-serrurerie">Devis - Serrurerie</SelectItem>
+                <SelectItem value="devis-menuiserie">Devis - Menuiserie extérieure</SelectItem>
+                <SelectItem value="depannage-urgent">Dépannage urgent</SelectItem>
+                <SelectItem value="information">Demande d'information</SelectItem>
                 <SelectItem value="autre">Autre</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="message">Décrivez votre projet *</Label>
+            <Label htmlFor="message">Message *</Label>
             <Textarea
               id="message"
+              placeholder="Décrivez vos besoins en détail..."
               value={formData.message}
-              onChange={(e) => handleChange("message", e.target.value)}
+              onChange={(e) => handleInputChange("message", e.target.value)}
+              rows={4}
               required
-              className="border-2 focus:border-primary min-h-[120px]"
-              placeholder="Décrivez votre besoin, les dimensions si connues, l'urgence..."
             />
           </div>
 
-          <div className="flex items-start space-x-2">
+          <div className="flex items-center space-x-2">
             <Checkbox
               id="rgpd"
               checked={formData.rgpd}
-              onCheckedChange={(checked) => handleChange("rgpd", checked as boolean)}
-              className="mt-1"
+              onCheckedChange={(checked) => handleInputChange("rgpd", checked as boolean)}
             />
-            <Label htmlFor="rgpd" className="text-sm text-muted-foreground leading-relaxed">
-              J'accepte que mes données personnelles soient utilisées pour me recontacter dans le cadre de cette demande. 
-              Conformément au RGPD, vous pouvez exercer vos droits en nous contactant.
+            <Label htmlFor="rgpd" className="text-sm">
+              J'accepte que mes données soient utilisées pour me recontacter concernant ma demande *
             </Label>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              className="flex items-center space-x-2"
-            >
-              <X className="h-4 w-4" />
-              <span>Annuler</span>
-            </Button>
-            <Button
-              type="submit"
-              className="flex items-center space-x-2"
-            >
-              <Send className="h-4 w-4" />
-              <span>Envoyer la demande</span>
-            </Button>
-          </div>
+          <Button type="submit" className="w-full flex items-center gap-2">
+            <Send className="h-4 w-4" />
+            Envoyer ma demande
+          </Button>
         </form>
-        
-        <div className="mt-6 p-4 bg-secondary/30 rounded-lg border-l-4 border-primary">
-          <h4 className="font-semibold text-primary mb-2">Zone d'intervention</h4>
-          <p className="text-sm text-muted-foreground mb-2">
-            Toulouse et communes limitrophes dans un rayon de 30km
-          </p>
-          <p className="text-xs text-muted-foreground">
-            Pour les interventions urgentes, nous nous déplaçons 7j/7
-          </p>
+
+        <div className="text-center text-sm text-muted-foreground mt-4">
+          <p>Nous mettons tout en œuvre pour vous répondre rapidement.</p>
           <p className="font-semibold">Merci de votre confiance !</p>
         </div>
       </DialogContent>

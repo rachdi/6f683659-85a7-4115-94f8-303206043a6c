@@ -9,21 +9,21 @@ const testimonials = [
     rating: 5,
   },
   {
-    text: "Intervention de qualité pour ma serrure cassée. Artisan professionnel et très arrangeant sur les horaires.",
-    author: "Jean-Pierre",
+    text: "Devis clair, intervention soignée, entreprise sérieuse. Ma porte d'entrée a été remplacée dans les délais annoncés.",
+    author: "Pierre",
     location: "Colomiers",
     rating: 5,
   },
   {
-    text: "Excellent travail de réparation de mes fenêtres. Prix très correct et respect des délais annoncés.",
+    text: "Réparation de volets roulants rapide et efficace. L'équipe est professionnelle et les prix sont corrects. Je recommande Simalik.",
     author: "Sophie",
-    location: "Blagnac",
+    location: "Balma",
     rating: 5,
   },
   {
-    text: "AASO m'a dépanné un dimanche soir pour une porte bloquée. Très réactif, je recommande vivement !",
-    author: "Michel",
-    location: "Tournefeuille",
+    text: "Excellent travail pour la motorisation de mes volets. Service client au top et finitions impeccables.",
+    author: "Jean-Luc",
+    location: "Toulouse",
     rating: 5,
   },
 ];
@@ -48,40 +48,27 @@ export const TestimonialsSection = () => {
                 <div className="flex items-start space-x-4">
                   <Quote className="h-8 w-8 text-primary/40 flex-shrink-0 mt-1" />
                   <div className="flex-1">
-                    <p className="text-muted-foreground mb-4 italic">
+                    <div className="flex items-center space-x-1 mb-3">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                      ))}
+                    </div>
+                    <blockquote className="text-foreground/90 italic leading-relaxed mb-4">
                       "{testimonial.text}"
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="font-semibold text-foreground">{testimonial.author}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        {Array.from({ length: testimonial.rating }).map((_, i) => (
-                          <Star key={i} className="h-4 w-4 text-accent fill-current" />
-                        ))}
-                      </div>
+                    </blockquote>
+                    <div className="flex justify-between items-center">
+                      <cite className="text-primary font-semibold not-italic">
+                        {testimonial.author}
+                      </cite>
+                      <span className="text-muted-foreground text-sm">
+                        {testimonial.location}
+                      </span>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Plus de 500 clients satisfaits nous font confiance
-          </p>
-          <div className="flex justify-center items-center space-x-2">
-            <div className="flex items-center space-x-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-6 w-6 text-accent fill-current" />
-              ))}
-            </div>
-            <span className="text-2xl font-bold text-foreground">4.9/5</span>
-            <span className="text-muted-foreground">(502 avis)</span>
-          </div>
         </div>
       </div>
     </section>
