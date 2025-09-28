@@ -8,7 +8,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, Mail, MapPin, CheckCircle } from "lucide-react";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  nom: z.string().trim().min(1, "Le nom est requis").max(100, "Le nom doit faire moins de 100 caractères"),
+  prenom: z.string().trim().min(1, "Le prénom est requis").max(100, "Le prénom doit faire moins de 100 caractères"),
+  telephone: z.string().trim().min(10, "Le numéro de téléphone doit contenir au moins 10 chiffres").max(20, "Le numéro de téléphone est trop long"),
+  email: z.string().trim().email("L'email n'est pas valide").max(255, "L'email doit faire moins de 255 caractères"),
+  sujet: z.string().min(1, "Veuillez sélectionner un sujet"),
+  message: z.string().trim().min(10, "Le message doit contenir au moins 10 caractères").max(1000, "Le message doit faire moins de 1000 caractères"),
+  rgpd: z.boolean().refine(val => val === true, "Vous devez accepter les conditions RGPD")
+});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,35 +32,79 @@ const Contact = () => {
     message: "",
     rgpd: false
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
+    setIsSubmitting(true);
     
-    if (!formData.rgpd) {
-      toast({
-        title: "Erreur",
-        description: "Veuillez accepter les conditions RGPD pour continuer.",
-        variant: "destructive"
-      });
-      return;
-    }
+    try {
+      // Validate form data
+      const validatedData = contactSchema.parse(formData);
+      
+      // Create WhatsApp message
+      const message = `🏠 *NOUVELLE DEMANDE DE DEVIS*
 
-    // Simulate form submission
-    toast({
-      title: "Demande envoyée !",
-      description: "Nous vous recontacterons dans les plus brefs délais.",
-    });
-    
-    // Reset form
-    setFormData({
-      nom: "",
-      prenom: "",
-      telephone: "",
-      email: "",
-      sujet: "",
-      message: "",
-      rgpd: false
-    });
+👤 *Client:* ${validatedData.prenom} ${validatedData.nom}
+📧 *Email:* ${validatedData.email}
+📱 *Téléphone:* ${validatedData.telephone}
+
+🔧 *Sujet:* ${validatedData.sujet.replace('devis-', 'Devis ').replace('depannage-urgent', 'Dépannage urgent').replace('information', 'Demande d\'information').replace('autre', 'Autre')}
+
+💬 *Message:*
+${validatedData.message}
+
+---
+Demande reçue via le site web Simalik Rénovation`;
+
+      // Open WhatsApp with pre-filled message
+      const whatsappUrl = `https://wa.me/33656869166?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+      
+      toast({
+        title: "Demande envoyée !",
+        description: "Votre demande a été transmise via WhatsApp. Nous vous recontacterons rapidement.",
+        duration: 5000,
+      });
+      
+      // Reset form after successful submission
+      setFormData({
+        nom: "",
+        prenom: "",
+        telephone: "",
+        email: "",
+        sujet: "",
+        message: "",
+        rgpd: false
+      });
+      
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            newErrors[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(newErrors);
+        
+        toast({
+          title: "Erreur de validation",
+          description: "Veuillez corriger les erreurs dans le formulaire.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Erreur",
+          description: "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
+          variant: "destructive"
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {
@@ -137,77 +192,91 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="nom">Nom *</Label>
-                  <Input
-                    id="nom"
-                    value={formData.nom}
-                    onChange={(e) => handleInputChange("nom", e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="prenom">Prénom *</Label>
-                  <Input
-                    id="prenom"
-                    value={formData.prenom}
-                    onChange={(e) => handleInputChange("prenom", e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-
               <div className="space-y-2">
-                <Label htmlFor="telephone">Téléphone *</Label>
+                <Label htmlFor="nom">Nom *</Label>
                 <Input
-                  id="telephone"
-                  type="tel"
-                  value={formData.telephone}
-                  onChange={(e) => handleInputChange("telephone", e.target.value)}
+                  id="nom"
+                  value={formData.nom}
+                  onChange={(e) => handleInputChange("nom", e.target.value)}
+                  className={errors.nom ? "border-destructive" : ""}
                   required
                 />
+                {errors.nom && <p className="text-sm text-destructive">{errors.nom}</p>}
               </div>
-
               <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="prenom">Prénom *</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  id="prenom"
+                  value={formData.prenom}
+                  onChange={(e) => handleInputChange("prenom", e.target.value)}
+                  className={errors.prenom ? "border-destructive" : ""}
                   required
                 />
+                {errors.prenom && <p className="text-sm text-destructive">{errors.prenom}</p>}
+              </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="sujet">Sujet *</Label>
-                <Select value={formData.sujet} onValueChange={(value) => handleInputChange("sujet", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Choisissez le type de demande" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="devis-volets">Devis - Volets roulants</SelectItem>
-                    <SelectItem value="devis-serrurerie">Devis - Serrurerie</SelectItem>
-                    <SelectItem value="devis-menuiserie">Devis - Menuiserie extérieure</SelectItem>
-                    <SelectItem value="depannage-urgent">Dépannage urgent</SelectItem>
-                    <SelectItem value="information">Demande d'information</SelectItem>
-                    <SelectItem value="autre">Autre</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="telephone">Téléphone *</Label>
+              <Input
+                id="telephone"
+                type="tel"
+                value={formData.telephone}
+                onChange={(e) => handleInputChange("telephone", e.target.value)}
+                className={errors.telephone ? "border-destructive" : ""}
+                placeholder="06 XX XX XX XX"
+                required
+              />
+              {errors.telephone && <p className="text-sm text-destructive">{errors.telephone}</p>}
+            </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="message">Message *</Label>
-                <Textarea
-                  id="message"
-                  placeholder="Décrivez vos besoins en détail..."
-                  value={formData.message}
-                  onChange={(e) => handleInputChange("message", e.target.value)}
-                  rows={4}
-                  required
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email *</Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                className={errors.email ? "border-destructive" : ""}
+                placeholder="votre@email.com"
+                required
+              />
+              {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
+            </div>
 
+            <div className="space-y-2">
+              <Label htmlFor="sujet">Sujet *</Label>
+              <Select value={formData.sujet} onValueChange={(value) => handleInputChange("sujet", value)}>
+                <SelectTrigger className={errors.sujet ? "border-destructive" : ""}>
+                  <SelectValue placeholder="Choisissez le type de demande" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="devis-volets">Devis - Volets roulants</SelectItem>
+                  <SelectItem value="devis-serrurerie">Devis - Serrurerie</SelectItem>
+                  <SelectItem value="devis-menuiserie">Devis - Menuiserie extérieure</SelectItem>
+                  <SelectItem value="depannage-urgent">Dépannage urgent</SelectItem>
+                  <SelectItem value="information">Demande d'information</SelectItem>
+                  <SelectItem value="autre">Autre</SelectItem>
+                </SelectContent>
+              </Select>
+              {errors.sujet && <p className="text-sm text-destructive">{errors.sujet}</p>}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="message">Message *</Label>
+              <Textarea
+                id="message"
+                placeholder="Décrivez vos besoins en détail (type de travaux, délais souhaités, etc.)..."
+                value={formData.message}
+                onChange={(e) => handleInputChange("message", e.target.value)}
+                className={errors.message ? "border-destructive" : ""}
+                rows={4}
+                required
+              />
+              {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
+            </div>
+
+            <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="rgpd"
@@ -218,11 +287,26 @@ const Contact = () => {
                   J'accepte que mes données soient utilisées pour me recontacter concernant ma demande *
                 </Label>
               </div>
+              {errors.rgpd && <p className="text-sm text-destructive">{errors.rgpd}</p>}
+            </div>
 
-              <Button type="submit" className="w-full flex items-center gap-2">
-                <Send className="h-4 w-4" />
-                Envoyer ma demande
-              </Button>
+            <Button 
+              type="submit" 
+              className="w-full flex items-center gap-2" 
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                  Envoi en cours...
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" />
+                  Envoyer ma demande
+                </>
+              )}
+            </Button>
             </form>
 
             <div className="text-center text-sm text-muted-foreground mt-6">
