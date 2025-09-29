@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import aasoLogo from "@/assets/aaso-logo.png";
 
 export const Header = () => {
@@ -24,9 +25,9 @@ export const Header = () => {
           <a href="#avis" className="text-foreground hover:text-primary transition-colors font-medium">
             Avis clients
           </a>
-          <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
+          <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
             Contact
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-3">
