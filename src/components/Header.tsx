@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Phone, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import aasoLogo from "@/assets/aaso-logo.png";
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-[var(--shadow-card)]">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -37,9 +41,51 @@ export const Header = () => {
               06.56.86.91.66
             </Button>
           </a>
-          <Button variant="outline" size="icon" className="lg:hidden">
-            <Menu className="h-4 w-4" />
-          </Button>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="lg:hidden">
+                <Menu className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col space-y-4 mt-8">
+                <a 
+                  href="#services" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg text-foreground hover:text-primary transition-colors font-medium py-2"
+                >
+                  Services
+                </a>
+                <a 
+                  href="#realisations" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg text-foreground hover:text-primary transition-colors font-medium py-2"
+                >
+                  Réalisations
+                </a>
+                <a 
+                  href="#avis" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg text-foreground hover:text-primary transition-colors font-medium py-2"
+                >
+                  Avis clients
+                </a>
+                <Link 
+                  to="/contact" 
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg text-foreground hover:text-primary transition-colors font-medium py-2"
+                >
+                  Contact
+                </Link>
+                <a href="tel:0656869166" className="pt-4">
+                  <Button variant="call" className="w-full">
+                    <Phone className="h-4 w-4" />
+                    06.56.86.91.66
+                  </Button>
+                </a>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
