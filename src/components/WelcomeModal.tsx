@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, X } from "lucide-react";
 
@@ -44,9 +44,9 @@ export const WelcomeModal = ({ onRequestQuote }: WelcomeModalProps) => {
           <DialogTitle className="text-xl font-bold text-primary mb-2">
             Bienvenue chez Simalik Rénovation !
           </DialogTitle>
-          <p className="text-muted-foreground">
+          <DialogDescription className="text-muted-foreground">
             Votre spécialiste en volets roulants, serrurerie et menuiserie à Toulouse
-          </p>
+          </DialogDescription>
         </DialogHeader>
         
         <div className="flex flex-col gap-3 mt-6">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -132,9 +132,9 @@ Demande reçue via le site web Simalik Rénovation`;
           <DialogTitle className="text-xl font-bold text-primary">
             Demander un devis gratuit
           </DialogTitle>
-          <p className="text-muted-foreground">
+          <DialogDescription className="text-muted-foreground">
             Décrivez-nous vos besoins, nous vous recontactons sous 24h !
-          </p>
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
